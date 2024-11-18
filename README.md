@@ -281,17 +281,19 @@ data/
 │   │   └── ...  # 总共1496个文件
 ```
 
+
+### 3. 将YOLO格式的标签转换成COCO格式的.json文件
+
 ```python
-import json
 import os
-import shutil
-
 import cv2
+import json
 
-# info ，license，categories 结构初始化；
-# 在train.json,val.json,test.json里面信息是一致的；
 
-# info，license暂时用不到
+# info, license, categories 结构初始化
+# 在train.json, val.json, 里面信息是一致的
+
+# info, license暂时用不到
 info = {
     "year": 2024,
     "version": '1.0',
@@ -304,7 +306,7 @@ licenses = {
     "url": "null",
 }
 
-# 自己的标签类别，跟yolo的数据集类别要对应好；
+# 自己的标签类别, 跟yolo的数据集类别要对应好
 categories = [
     {
         "id": 0,
@@ -316,14 +318,14 @@ categories = [
     }
 ]
 
-# 初始化train, valid 数据字典
+# 初始化train, val 数据字典
 # info licenses categories 在 train 和 val 里面都是一致的；
 train_data = {'info': info, 'licenses': licenses, 'categories': categories, 'images': [], 'annotations': []}
 val_data = {'info': info, 'licenses': licenses, 'categories': categories, 'images': [], 'annotations': []}
 
 
-# image_path 对应yolov8的图像路径，比如images/train；
-# label_path 对应yolov8的label路径，比如labels/train 跟images要对应；
+# image_path 对应的图像路径，比如images/train；
+# label_path 对应的label路径，比如labels/train 跟images要对应；
 def yolo_covert_coco_format(image_path, label_path):
     images = []
     annotations = []
@@ -339,7 +341,7 @@ def yolo_covert_coco_format(image_path, label_path):
             continue
         if image_info != {}:
             images.append(image_info)
-        # 处理label信息-------
+        # 处理 label 信息-------
         label_file = os.path.join(label_path, img_file.replace('.png', '.txt'))
         with open(label_file, 'r') as f:
             for idx, line in enumerate(f.readlines()):
