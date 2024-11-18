@@ -54,6 +54,8 @@ print(torch.cuda_version)
 print(torch.backends.cudnn.version())
 ```
 
+**关闭VPN**
+
 ```
 pip install tqdm
 ```
@@ -61,4 +63,16 @@ pip install tqdm
 ```
 pip install -i https://mirrors.aliyun.com/pypi/simple/ opencv-python
 ```
+
+```
+pip install -i https://mirrors.aliyun.com/pypi/simple/ matplotlib
+```
+
+```
+pip install -i https://mirrors.aliyun.com/pypi/simple/ pandas
+```
+
+
+
+
 
