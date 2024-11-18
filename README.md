@@ -26,7 +26,7 @@ training/
 │   └── ...
 ```
 
+conda create -n zourz python=3.9
 
-
-
+conda activate CarDetection
 
