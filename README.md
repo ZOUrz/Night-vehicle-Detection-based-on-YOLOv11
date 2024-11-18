@@ -5,14 +5,28 @@
 提取码：h1ar
 
 ```
-project/
-├── src/
-│   ├── main.cpp
-│   ├── utils.cpp
-│   └── utils.h
-├── include/
-│   └── utils.h
-├── CMakeLists.txt
-└── README.md
+data_object_image_2/
+├── training/
+│   └── image_2/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
+└── testing/
+│   └── image_2/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
 ```
+
+```
+training/
+├── label/
+│   ├── 0000000.txt
+│   ├── 0000001.txt
+│   └── ...
+```
+
+
+
+
 
