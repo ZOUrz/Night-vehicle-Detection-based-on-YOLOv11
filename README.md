@@ -73,7 +73,7 @@ pip install -i https://mirrors.aliyun.com/pypi/simple/ pandas
 ```
 
 
-**将KITTI格式的标签转为YOLO格式的标签**
+### 将KITTI格式的标签转为YOLO格式的标签
 
 ```python
 import os
@@ -192,5 +192,88 @@ data/
 │   ├── 000001.txt
 │   └── ...
 ```
+
+
+### 划分训练集和测试集
+
+```python
+import os
+import random
+import shutil
+
+
+def mvfile(path,topath):
+    xmllist = os.listdir(path + "/labels/")
+    xmlpath = path + "/labels/"
+    imgpath = path + "/images/"
+    xmltopath = topath + "/labels/"
+    if not os.path.exists(xmltopath):
+        os.makedirs(xmltopath)
+    imgtopath = topath + "/images/"
+    if not os.path.exists(imgtopath):
+        os.makedirs(imgtopath)
+    xmls = random.sample(xmllist, 1496)
+    for xml in xmls:
+        with open(topath + "抽取的labels.txt", "a") as f:
+            f.write(xml+"\n")
+        xmlfile = xmlpath + xml
+        print(xmlfile)
+        shutil.move(xmlfile, xmltopath)
+        imgfile = imgpath + xml.replace("txt","png")
+        print(imgfile)
+        shutil.move(imgfile, imgtopath)
+
+if __name__ == '__main__':
+    path = r"E:/DataSets/KITTI/Object/data"
+    mvfile(path, path + "/val/")
+```
+
+```
+data/
+├── images/
+│   ├── 000000.png
+│   ├── 000001.png
+│   │   └── ...
+└── labels/
+│   ├── 000000.txt
+│   ├── 000001.txt
+│   └── ...
+└── val/
+│   └── images/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
+│   └── labels/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
+│   └── 抽取的labels.txt
+```
+
+```
+data/
+├── train/
+│   ├── images/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   │   └── ...
+│   └── labels/
+│   │   ├── 000000.txt
+│   │   ├── 000001.txt
+│   │   └── ...
+└── val/
+│   └── images/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
+│   └── labels/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...
+```
+
+
+
+
 
 
