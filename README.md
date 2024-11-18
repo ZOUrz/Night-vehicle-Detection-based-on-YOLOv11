@@ -425,6 +425,11 @@ data/
 │   └── instances_val.json
 ```
 
+```
+pip config set install.trusted-host mirrors.aliyun.com
+```
 
-
+```
+cd ultralytics-main
+```
 
