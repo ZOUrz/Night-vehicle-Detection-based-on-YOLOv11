@@ -433,3 +433,7 @@ pip config set install.trusted-host mirrors.aliyun.com
 cd ultralytics-main
 ```
 
+```
+pip install -i https://mirrors.aliyun.com/pypi/simple/ ultralytics
+```
+
