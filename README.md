@@ -79,6 +79,7 @@ pip install -i https://mirrors.aliyun.com/pypi/simple/ pandas
 import os
 import cv2
 import glob
+import shutil
 from tqdm import tqdm
 
 
@@ -89,14 +90,17 @@ dic = {'Car': 0, 'Van': 0, 'Truck': 0,
 
 def change_format():
     # 路径配置
-    img_path = r"E:/DataSets/KITTI/Object/RawData/image_2/*"  # kitti图像数据
-    label_path = r"E:/DataSets/KITTI/Object/RawData/label_2/" # kitti标签数据
-    filename_list = glob.glob(img_path)
-    save_path = r"E:/DataSets/KITTI/Object/data/labels/"  # 修改后标签数据
+    images_path = r"E:/DataSets/KITTI/Object/data_object_image_2/training/image_2/*"  # kitti图像数据
+    labels_path = r"E:/DataSets/KITTI/Object/training/label_2/"  # kitti标签数据
+    filename_list = glob.glob(images_path)
+    images_save_path = r"E:/DataSets/KITTI/Object/data/images/"  # 图像文件保存路径
+    labels_save_path = r"E:/DataSets/KITTI/Object/data/labels/"  # yolo格式标签文件保存路径
 
     # 如果保存路径不存在则创建
-    if not os.path.exists(save_path):
-        os.makedirs(save_path)
+    if not os.path.exists(images_save_path):
+        os.makedirs(images_save_path)
+    if not os.path.exists(labels_save_path):
+        os.makedirs(labels_save_path)
 
     # 检查是否找到图像
     if not filename_list:
@@ -111,8 +115,8 @@ def change_format():
     # 遍历图像文件
     for img_name in tqdm(filename_list, desc='Processing'):
         image_name = os.path.basename(img_name).split('.')[0]  # 获取图片名称（无扩展名）
-        label_file = os.path.join(label_path, image_name + '.txt')  # 找到对应的标签
-        save_label_path = os.path.join(save_path, image_name + '.txt')  # 修改后标签保存路径
+        label_file = os.path.join(labels_path, image_name + '.txt')  # 找到对应的标签
+        label_save_path = os.path.join(labels_save_path, image_name + '.txt')  # 修改后标签保存路径
 
         # 检查标签文件是否存在
         if not os.path.exists(label_file):
@@ -134,7 +138,7 @@ def change_format():
             labels = f.readlines()
 
         # 清空标签文件内容以避免追加重复数据
-        with open(save_label_path, 'w') as w:
+        with open(label_save_path, 'w') as w:
             for label in labels:
                 label = label.split(' ')
 
@@ -168,6 +172,9 @@ def change_format():
                 # 写入转换后的标签
                 w.write(f'{classindex} {bx} {by} {bw} {bh}\n')
 
+        # 将图像文件复制到指定路径
+        shutil.copy(img_name, images_save_path)
+
         processed_images += 1
 
     # 打印统计信息
@@ -176,9 +183,9 @@ def change_format():
     for classname, count in category_count.items():
         print(f'{classname}: {count} labels processed.')
 
-
 # 调用函数
 change_format()
+
 ```
 
 ```
@@ -186,11 +193,11 @@ data/
 ├── images/
 │   ├── 000000.png
 │   ├── 000001.png
-│   │   └── ...
+│   │   └── ...  # 总共7841个文件
 └── labels/
 │   ├── 000000.txt
 │   ├── 000001.txt
-│   └── ...
+│   └── ...  # 总共7841个文件
 ```
 
 
@@ -202,74 +209,76 @@ import random
 import shutil
 
 
-def mvfile(path,topath):
-    xmllist = os.listdir(path + "/labels/")
-    xmlpath = path + "/labels/"
-    imgpath = path + "/images/"
-    xmltopath = topath + "/labels/"
-    if not os.path.exists(xmltopath):
-        os.makedirs(xmltopath)
-    imgtopath = topath + "/images/"
-    if not os.path.exists(imgtopath):
-        os.makedirs(imgtopath)
-    xmls = random.sample(xmllist, 1496)
-    for xml in xmls:
-        with open(topath + "抽取的labels.txt", "a") as f:
-            f.write(xml+"\n")
-        xmlfile = xmlpath + xml
-        print(xmlfile)
-        shutil.move(xmlfile, xmltopath)
-        imgfile = imgpath + xml.replace("txt","png")
-        print(imgfile)
-        shutil.move(imgfile, imgtopath)
+def mvfile(path):
+    # 标签文件列表
+    labels_list = os.listdir(path + "/labels/")
+    # 标签文件路径
+    labels_path = path + "/labels/"
+    # 图像文件路径
+    images_path = path + "/images/"
+    # 保存标签文件的路径
+    train_labels_path = path + "/labels/train/"
+    val_labels_path = path + "/labels/val/"
+    # 保存图像文件的路径
+    train_images_path = path + "/images/train/"
+    val_images_path = path + "/images/val/"
+
+    if not os.path.exists(train_labels_path):
+        os.makedirs(train_labels_path)
+    if not os.path.exists(val_labels_path):
+        os.makedirs(val_labels_path)
+    if not os.path.exists(train_images_path):
+        os.makedirs(train_images_path)
+    if not os.path.exists(val_images_path):
+        os.makedirs(val_images_path)
+
+    val_labels_list = random.sample(labels_list, 1496)
+    print("------ Split val ------")
+    for label in val_labels_list:
+        val_label_file = labels_path + label
+        print(val_label_file)
+        shutil.move(val_label_file , val_labels_path)
+        val_images_file = images_path + label.replace("txt","png")
+        print(val_images_file)
+        shutil.move(val_images_file, val_images_path)
+
+    val_labels_list_set = set(val_labels_list)
+    train_labels_list = [item for item in labels_list if item not in val_labels_list_set]
+    print("------ Split train ------")
+    for label in train_labels_list:
+        train_label_file = labels_path + label
+        print(train_label_file)
+        shutil.move(train_label_file , train_labels_path)
+        train_images_file = images_path + label.replace("txt","png")
+        print(train_images_file)
+        shutil.move(train_images_file, train_images_path)
 
 if __name__ == '__main__':
     path = r"E:/DataSets/KITTI/Object/data"
-    mvfile(path, path + "/val/")
+    mvfile(path)
+
 ```
 
 ```
 data/
 ├── images/
-│   ├── 000000.png
-│   ├── 000001.png
-│   │   └── ...
+│   ├── train/
+│   │   ├── 000000.png
+│   │   ├── 000001.png
+│   │   └── ...  # 总共5985个文件
+│   └── val/
+│   │   ├── 000006.png
+│   │   ├── 000023.png
+│   │   └── ...  # 总共1496个文件
 └── labels/
-│   ├── 000000.txt
-│   ├── 000001.txt
-│   └── ...
-└── val/
-│   └── images/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
-│   └── labels/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
-│   └── 抽取的labels.txt
-```
-
-```
-data/
-├── train/
-│   ├── images/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   │   └── ...
-│   └── labels/
+│   └── train/
 │   │   ├── 000000.txt
 │   │   ├── 000001.txt
-│   │   └── ...
-└── val/
-│   └── images/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
-│   └── labels/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
+│   │   └── ...  # 总共5985个文件
+│   └── val/
+│   │   ├── 000006.txt
+│   │   ├── 000023.txt
+│   │   └── ...  # 总共1496个文件
 ```
 
 
