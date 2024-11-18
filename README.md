@@ -83,8 +83,6 @@ from tqdm import tqdm
 
 
 # 类别映射
-dic = {'Car': 0, 'Van': 0, 'Truck': 0}
-
 dic = {'Car': 0, 'Van': 0, 'Truck': 0,
        'Tram': 1, 'Pedestrian': 1, 'Person_sitting': 1, 'Cyclist': 1, 'Misc': 1, 'DontCare': 1}
 
