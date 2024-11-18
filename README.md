@@ -54,4 +54,11 @@ print(torch.cuda_version)
 print(torch.backends.cudnn.version())
 ```
 
+```
+pip install tqdm
+```
+
+```
+pip install -i https://mirrors.aliyun.com/pypi/simple/ opencv-python
+```
 
