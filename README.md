@@ -434,6 +434,6 @@ cd ultralytics-main
 ```
 
 ```
-pip install -i https://mirrors.aliyun.com/pypi/simple/ ultralytics
+pip install -e .
 ```
 
