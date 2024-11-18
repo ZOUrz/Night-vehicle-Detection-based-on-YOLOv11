@@ -57,7 +57,7 @@ print(torch.backends.cudnn.version())
 **关闭VPN**
 
 ```
-pip install tqdm
+pip install -i https://mirrors.aliyun.com/pypi/simple/ tqdm
 ```
 
 ```
