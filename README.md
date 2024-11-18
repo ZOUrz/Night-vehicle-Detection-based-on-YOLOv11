@@ -183,7 +183,7 @@ change_format()
 
 ```
 data/
-├── image/
+├── images/
 │   ├── 000000.png
 │   ├── 000001.png
 │   │   └── ...
