@@ -31,7 +31,7 @@ conda upgrade conda
 ```
 
 ```
-conda create -n zourz python=3.9
+conda create -n CarDetection python=3.8
 ```
 
 ```
@@ -39,7 +39,7 @@ conda activate CarDetection
 ```
 
 ```
-conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3
+conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
 ```
 
 ```
