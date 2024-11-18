@@ -42,4 +42,16 @@ conda activate CarDetection
 conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3
 ```
 
+```
+python
+```
+
+```
+import torch
+print(torch.cuda.is_available())
+print(torch.backends.cudnn.is_available())
+print(torch.cuda_version)
+print(torch.backends.cudnn.version())
+```
+
 
