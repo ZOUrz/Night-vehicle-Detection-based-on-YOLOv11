@@ -27,6 +27,10 @@ training/
 ```
 
 ```
+conda upgrade conda
+```
+
+```
 conda create -n zourz python=3.9
 ```
 
