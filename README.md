@@ -181,4 +181,16 @@ def change_format():
 change_format()
 ```
 
+```
+data/
+├── image/
+│   ├── 000000.png
+│   ├── 000001.png
+│   │   └── ...
+└── labels/
+│   ├── 000000.txt
+│   ├── 000001.txt
+│   └── ...
+```
+
 
