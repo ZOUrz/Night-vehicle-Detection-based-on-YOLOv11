@@ -39,7 +39,7 @@ conda activate CarDetection
 ```
 
 ```
-conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
+conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 
 ```
@@ -423,10 +423,6 @@ data/
 └── annotations/
 │   ├── instances_train.json
 │   └── instances_val.json
-```
-
-```
-pip config set install.trusted-host mirrors.aliyun.com
 ```
 
 ```
