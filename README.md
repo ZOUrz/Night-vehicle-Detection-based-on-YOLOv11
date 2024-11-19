@@ -84,8 +84,8 @@ from tqdm import tqdm
 
 
 # 类别映射
-dic = {'Car': 0, 'Van': 0, 'Truck': 0,
-       'Tram': 1, 'Pedestrian': 1, 'Person_sitting': 1, 'Cyclist': 1, 'Misc': 1, 'DontCare': 1}
+dic = {'Car': 0, 'Van': 1, 'Truck': 2,
+       'Tram': 3, 'Pedestrian': 4, 'Person_sitting': 4, 'Cyclist': 4, 'Misc': 5, 'DontCare': 5}
 
 
 def change_format():
@@ -314,9 +314,26 @@ categories = [
     },
     {
         "id": 1,
+        "name": 'Van',
+    },
+    {
+        "id": 2,
+        "name": 'Truck',
+    },
+    {
+        "id": 3,
+        "name": 'Tram',
+    },
+    {
+        "id": 4,
+        "name": 'Person',
+    },
+    {
+        "id": 5,
         "name": 'DontCare',
-    }
+    },
 ]
+
 
 # 初始化train, val 数据字典
 # info licenses categories 在 train 和 val 里面都是一致的；
@@ -431,5 +448,24 @@ cd ultralytics-main
 
 ```
 pip install -e .
+```
+
+```yaml
+# Ultralytics YOLO 🚀, AGPL-3.0 license
+
+path: E:/DataSets/KITTI/Object/data # 修改为包含图片和标签的父文件夹
+train: images/train # train images (relative to 'path')
+val: images/val # val images (relative to 'path')
+
+nc: 6      # 修改为类别数量
+# Classes
+names:
+  0: car
+  1: van
+  2: truck
+  3: tram
+  4: person
+  5: dontcare
+
 ```
 
