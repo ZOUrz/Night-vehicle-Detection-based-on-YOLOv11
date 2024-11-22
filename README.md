@@ -89,7 +89,41 @@
 
 - ### 3.1 标签格式转换 KITTI -> YOLO
 
-- 将KITTI格式的标签转为YOLO格式的标签
+  - 执行 [1_TransferLabels_kitti2yolo.py](DataPreprocess/1_TransferLabels_kitti2yolo.py), 将 KITTI 格式的标签转为 YOLO 格式的标签
+ 
+  - 转换标签后的数据集文件存放格式如下:
+ 
+  ```
+  KITTI/
+  └── Object
+  │   ├── data_object_image_2/
+  │   │   ├── testing/
+  │   │   │   └── image_2/
+  │   │   │   │   ├── 000000.png
+  │   │   │   │   ├── 000001.png
+  │   │   │   │   └── ...  # 总共 7518 个文件
+  │   │   └── training/
+  │   │   │   └── image_2/
+  │   │   │   │   ├── 000000.png
+  │   │   │   │   ├── 000001.png
+  │   │   │   │   └── ...  # 总共 7481 个文件
+  │   ├── data_object_label_2/
+  │   │   └── training/
+  │   │   │   └── label_2/
+  │   │   │   │   ├── 000000.txt
+  │   │   │   │   ├── 000001.txt
+  │   │   │   │   └── ...  # 总共 7481 个文件
+  │   └── data/
+  │   │   ├── images/
+  │   │   │   ├── 000000.png
+  │   │   │   ├── 000001.png
+  │   │   │   │   └── ...  # 总共7841个文件
+  │   │   └── labels/
+  │   │   │   ├── 000000.txt
+  │   │   │   ├── 000001.txt
+  │   │   │   └── ...  # 总共7841个文件
+  ```
+
 
 ```
 data/
