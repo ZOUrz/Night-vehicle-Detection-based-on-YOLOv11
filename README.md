@@ -11,29 +11,31 @@
   - Ubuntu 系统最好使用 `7z` 进行分卷解压缩, 如果没有安装就使用命令 `sudo apt install p7zip-full` 下载安装
 
   - 在压缩包所在文件夹内打开终端, 输入命令 `7z x data_object_image_2.zip` 即可进行解压
+ 
+- 解压后的文件存放格式如下:
+
+  ```
+  KITTI/
+  └── Object
+  │   ├── data_object_image_2/
+  │   │   ├── testing/
+  │   │   │   └── image_2/
+  │   │   │   │   ├── 000000.png
+  │   │   │   │   ├── 000001.png
+  │   │   │   │   └── ...  # 总共 7518 个文件
+  │   │   └── training/
+  │   │   │   └── image_2/
+  │   │   │   │   ├── 000000.png
+  │   │   │   │   ├── 000001.png
+  │   │   │   │   └── ...  # 总共 7481 个文件
+  │   └── data_object_label_2/
+  │   │   └── training/
+  │   │   │   └── label_2/
+  │   │   │   │   ├── 000000.txt
+  │   │   │   │   ├── 000001.txt
+  │   │   │   │   └── ...  # 总共 7481 个文件
+  ```
        
-       ```
-       data_object_image_2/
-       ├── training/
-       │   └── image_2/
-       │   │   ├── 000000.png
-       │   │   ├── 000001.png
-       │   │   └── ...
-       └── testing/
-       │   └── image_2/
-       │   │   ├── 000000.png
-       │   │   ├── 000001.png
-       │   │   └── ...
-       ```
-
-```
-training/
-├── label/
-│   ├── 0000000.txt
-│   ├── 0000001.txt
-│   └── ...
-```
-
 ```
 conda upgrade conda
 ```
