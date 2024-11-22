@@ -233,7 +233,7 @@
 
     ```
     https://github.com/ultralytics/ultralytics.git
-    cd ultralytics-main
+    cd ultralytics
     pip install -e .
     ```
 
