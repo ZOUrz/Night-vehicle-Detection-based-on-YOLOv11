@@ -313,3 +313,10 @@
     
     ```
 
+
+- ### 4.4 开始训练
+
+  ```
+  yolo task=detect mode=train data=kitti.yaml model=yolov8s.yaml epochs=200 imgsz=640 device=[0,1] project=/home/ai/student/ZOUrz/CarDetection/ultralytics-main/runs/yolov8s batch=128 patience=20 name=default_hyp_200epochs
+  ```
+
