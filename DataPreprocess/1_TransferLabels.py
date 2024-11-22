@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 # 类别映射
 dic = {'Car': 0, 'Van': 0, 'Truck': 0,
-       'Tram': 1, 'Pedestrian': 2, 'Person_sitting': 2, 'Cyclist': 3, 'Misc': 4}
+            'Tram': 1, 'Pedestrian': 2, 'Person_sitting': 2, 'Cyclist': 3, 'Misc': 4}
 
 
 def change_format():
