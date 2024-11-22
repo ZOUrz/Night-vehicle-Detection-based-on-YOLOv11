@@ -1,4 +1,52 @@
-## 1. KITTI 目标检测数据集下载
+
+
+
+## 1. 构建深度学习环境
+
+  - 在终端输入如下代码, 创建一个名为 CarDetection 的虚拟环境, Python 版本为 3.8
+
+    ```
+    conda upgrade conda
+    conda create -n CarDetection python=3.8
+    conda activate CarDetection
+    ```
+
+  - 安装带有 CUDA 版本的 Pytorch 2.0.1
+
+    ```
+    conda activate CarDetection
+    conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
+    ```
+
+  - 验证是否安装成功
+
+    - 在终端输入:
+   
+      ```
+      python
+      ```
+
+    - 在 Python 中输入:
+
+      ```
+      import torch
+      print(torch.cuda.is_available())
+      print(torch.backends.cudnn.is_available())
+      print(torch.version.cuda)
+      print(torch.backends.cudnn.version())
+      ```
+
+  - 安装其他库
+
+    ```
+    pip install -i https://mirrors.aliyun.com/pypi/simple/ tqdm
+    pip install -i https://mirrors.aliyun.com/pypi/simple/ opencv-python
+    pip install -i https://mirrors.aliyun.com/pypi/simple/ matplotlib
+    pip install -i https://mirrors.aliyun.com/pypi/simple/ pandas
+    ```
+
+
+## 2. KITTI 目标检测数据集下载
 
 - KITTI 官网提供的链接国内无法下载, 且网上的资源也大部分实效, 因为我将数据集重新上传到百度网盘, 供大家下载
 
@@ -36,51 +84,7 @@
   │   │   │   │   └── ...  # 总共 7481 个文件
   ```
        
-```
-conda upgrade conda
-```
 
-```
-conda create -n CarDetection python=3.8
-```
-
-```
-conda activate CarDetection
-```
-
-```
-conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
-```
-
-```
-python
-```
-
-```
-import torch
-print(torch.cuda.is_available())
-print(torch.backends.cudnn.is_available())
-print(torch.version.cuda)
-print(torch.backends.cudnn.version())
-```
-
-**关闭VPN**
-
-```
-pip install -i https://mirrors.aliyun.com/pypi/simple/ tqdm
-```
-
-```
-pip install -i https://mirrors.aliyun.com/pypi/simple/ opencv-python
-```
-
-```
-pip install -i https://mirrors.aliyun.com/pypi/simple/ matplotlib
-```
-
-```
-pip install -i https://mirrors.aliyun.com/pypi/simple/ pandas
-```
 
 
 ### 将KITTI格式的标签转为YOLO格式的标签
