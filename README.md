@@ -11,20 +11,20 @@
        - Ubuntu 系统最好使用 `7z` 进行分卷解压缩, 如果没有安装就使用命令 `sudo apt install p7zip-full` 下载安装
 
        - 在压缩包所在文件夹内打开终端, 输入命令 `7z x data_object_image_2.zip` 即可进行解压
-
-```
-data_object_image_2/
-├── training/
-│   └── image_2/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
-└── testing/
-│   └── image_2/
-│   │   ├── 000000.png
-│   │   ├── 000001.png
-│   │   └── ...
-```
+       
+       ```
+       data_object_image_2/
+       ├── training/
+       │   └── image_2/
+       │   │   ├── 000000.png
+       │   │   ├── 000001.png
+       │   │   └── ...
+       └── testing/
+       │   └── image_2/
+       │   │   ├── 000000.png
+       │   │   ├── 000001.png
+       │   │   └── ...
+       ```
 
 ```
 training/
