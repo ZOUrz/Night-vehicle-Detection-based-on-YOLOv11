@@ -2,15 +2,15 @@
 
 - KITTI 官网提供的链接国内无法下载, 且网上的资源也大部分实效, 因为我将数据集重新上传到百度网盘, 供大家下载
 
-       - 百度网盘链接：https://pan.baidu.com/s/165m3yFxvHowZSyxAgZMjqQ?pwd=h1ar 提取码：h1ar
+  - 百度网盘链接：https://pan.baidu.com/s/165m3yFxvHowZSyxAgZMjqQ?pwd=h1ar 提取码：h1ar
 
 - 使用说明
 
-       - 每个文件的内容被分成多个压缩包, 对于不同内容的压缩包, 只需要解压对应的 xxx.zip 文件
+  - 每个文件的内容被分成多个压缩包, 对于不同内容的压缩包, 只需要解压对应的 xxx.zip 文件
 
-       - Ubuntu 系统最好使用 `7z` 进行分卷解压缩, 如果没有安装就使用命令 `sudo apt install p7zip-full` 下载安装
+  - Ubuntu 系统最好使用 `7z` 进行分卷解压缩, 如果没有安装就使用命令 `sudo apt install p7zip-full` 下载安装
 
-       - 在压缩包所在文件夹内打开终端, 输入命令 `7z x data_object_image_2.zip` 即可进行解压
+  - 在压缩包所在文件夹内打开终端, 输入命令 `7z x data_object_image_2.zip` 即可进行解压
        
        ```
        data_object_image_2/
