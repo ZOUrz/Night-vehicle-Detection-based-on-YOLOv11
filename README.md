@@ -232,7 +232,7 @@
   - 在终端输入如下代码:
 
     ```
-    https://github.com/ultralytics/ultralytics.git
+    git clone https://github.com/ultralytics/ultralytics.git
     cd ultralytics
     pip install -e .
     ```
