@@ -224,31 +224,47 @@
     ```
 
 
-# 4. 安装 Ultralytics
+## 4. 使用各个版本的 YOLO 进行训练和评估
 
-- 
+
+- ### 4.1 安装 Ultralytics
+
+  - 在终端输入如下代码:
+
+    ```
+    https://github.com/ultralytics/ultralytics.git
+    cd ultralytics-main
+    pip install -e .
+    ```
+
+
+- ### 4.2 编写 kitti.yaml 文件
+  
+  ```yaml
+  # Ultralytics YOLO 🚀, AGPL-3.0 license
+  
+  path: E:/DataSets/KITTI/Object/data # 修改为包含图片和标签的父文件夹
+  train: images/train # train images (relative to 'path')
+  val: images/val # val images (relative to 'path')
+  
+  nc: 6      # 修改为类别数量
+  # Classes
+  names:
+    0: car
+    1: van
+    2: truck
+    3: tram
+    4: person
+    5: dontcare
+  
   ```
-  cd ultralytics-main
-  pip install -e .
-  ```
 
 
-```yaml
-# Ultralytics YOLO 🚀, AGPL-3.0 license
+- ### 4.3 修改模型的种类数量
 
-path: E:/DataSets/KITTI/Object/data # 修改为包含图片和标签的父文件夹
-train: images/train # train images (relative to 'path')
-val: images/val # val images (relative to 'path')
+  - 以yolov5s.yaml为例，主要修改其种类的数量nc: 7 # number of classes，完整的代码如下所示：
 
-nc: 6      # 修改为类别数量
-# Classes
-names:
-  0: car
-  1: van
-  2: truck
-  3: tram
-  4: person
-  5: dontcare
-
+```
+以yolov5s.yaml为例，主要修改其种类的数量nc: 7 # number of classes，完整的代码如下所示：
 ```
 
