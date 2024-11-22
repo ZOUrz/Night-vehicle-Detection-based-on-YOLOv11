@@ -8,7 +8,6 @@
     ```
     conda upgrade conda
     conda create -n CarDetection python=3.8
-    conda activate CarDetection
     ```
 
   - 安装带有 CUDA 版本的 Pytorch 2.0.1
