@@ -320,3 +320,22 @@
   yolo task=detect mode=train data=kitti.yaml model=yolov8s.yaml epochs=200 imgsz=640 device=[0,1] project=/home/ai/student/ZOUrz/CarDetection/ultralytics-main/runs/yolov8s batch=128 patience=20 name=default_hyp_200epochs
   ```
 
+
+## 5. 夜间车辆检测数据集
+
+
+- ### 下载 Labelimg
+
+  - 使用 Labelimg 查看夜间车辆检测数据集的标注是否正常
+
+    ```
+    pip install labelimg
+    labelimg
+    ```
+
+
+
+
+
+
+
