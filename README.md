@@ -330,7 +330,7 @@
 
     ```
     pip install -i https://mirrors.aliyun.com/pypi/simple/ labelimg
-    labelimg
+    labelImg
     ```
 
 
