@@ -329,7 +329,7 @@
   - 使用 Labelimg 查看夜间车辆检测数据集的标注是否正常
 
     ```
-    pip install labelimg
+    pip install -i https://mirrors.aliyun.com/pypi/simple/ labelimg
     labelimg
     ```
 
